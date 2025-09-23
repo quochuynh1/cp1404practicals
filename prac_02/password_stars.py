@@ -1,13 +1,11 @@
-"""ask user for password, print asterisks as long as password"""
+"""Ask user for password of minimum characters, print asterisks as many asterisks as the length of password"""
 
-password = input("Password:")
-password_length = len(password)
+MINIMUM_CHARACTERS = 5
 
-if password == "":
-    print("Password can't be empty")
-else:
-    for i in range(password_length):
-        print("*", end="")
+password = input("Enter password of at least 5 characters:")
 
-
-
+while len(password) < MINIMUM_CHARACTERS:
+    print("Password must be at least 5 characters")
+    password = input("Enter password of at least 5 characters:")
+for i in range(len(password)):
+    print("*", end="")
