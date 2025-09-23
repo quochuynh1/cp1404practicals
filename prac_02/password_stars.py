@@ -1,4 +1,4 @@
-"""Ask user for password of minimum characters, print asterisks as many asterisks as the length of password"""
+"""Ask user for password of minimum characters, print as many asterisks as the length of password"""
 
 MINIMUM_CHARACTERS = 5
 
@@ -17,7 +17,8 @@ def get_password():
     return password
 
 
-def print_asterisks(password):
+def print_asterisks(password: str):
+    """Print as many asterisks as the length of password"""
     for i in range(len(password)):
         print("*", end="")
 
