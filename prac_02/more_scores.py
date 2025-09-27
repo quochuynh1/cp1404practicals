@@ -4,11 +4,13 @@ import random
 
 
 def main():
-    """print the random score and result"""
+    """write the random score and result to a newly opened text file"""
     number_of_scores = get_number_of_scores()
-    for i in range(number_of_scores):
-        random_score = assign_random_score(number_of_scores)
-        print(f"{random_score} is:", categorise_score(random_score))
+    with open("results.text", "w") as file: # Open a file to save result
+        for i in range(number_of_scores):
+            random_score = assign_random_score(number_of_scores)
+            result = categorise_score(random_score)
+            file.write(f"{random_score} is: {result}\n") # Instead of printing in terminal, will write/print to the file
 
 
 def get_number_of_scores():
