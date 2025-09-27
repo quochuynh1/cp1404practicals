@@ -5,11 +5,11 @@ Replace each `...` with your meaningful answer.
 
 ## What percentage of the lecture videos have you watched so far?
 
-100%
+100% (from week 1 and 2)
 
 ## What time, location and duration have you scheduled to watch lecture videos?
 
-I break the lecture videos into three chunks. I'll start watching 1/3 of them on Saturday, another 1/3 - 2/3 on Sunday, and whatever I have left, I'll finish on Monday.
+I break the lecture videos into three chunks. I'll start watching 1/3 of them on Saturday, another 1/3 - 2/3 on Sunday, and whatever I have left, I'll finish on Monday. As for the location, I'll watch the videos each week at my desk in my study on my PC. 
 ## What are you doing well in the subject so far that you will keep doing?
 
 I feel as though so far, I am doing a good job of keeping on top of the work load. As in watching the lecture videos as scheduled, and finishing the practicals on time. 
