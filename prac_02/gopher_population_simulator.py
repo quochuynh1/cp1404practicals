@@ -2,8 +2,8 @@
 
 import random
 
-def main():
 
+def main():
     print("Welcome to the Gopher Population Simulator!")
     print("Starting population: 1000")
     print("Year 1")
@@ -13,14 +13,11 @@ def main():
         gopher_deaths = generate_random_gopher_death()
         SECRET_POPULATION = 1000
 
-
         print(f"{gopher_births} gophers were born. {gopher_deaths} died.")
         SECRET_POPULATION = SECRET_POPULATION + gopher_births - gopher_deaths
         print(f"New population: {SECRET_POPULATION}")
         print("Year", i)
         print()
-
-
 
 
 def generate_random_gopher_birth():
@@ -31,6 +28,7 @@ def generate_random_gopher_birth():
     gopher_births = random.randint(lower_limit_birth, upper_limit_birth)
     return gopher_births
 
+
 def generate_random_gopher_death():
     SECRET_POPULATION = 1000
     lower_limit_death = int(SECRET_POPULATION * 0.05)
@@ -38,5 +36,6 @@ def generate_random_gopher_death():
 
     gopher_death = random.randint(lower_limit_death, upper_limit_death)
     return gopher_death
+
 
 main()
