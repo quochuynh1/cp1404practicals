@@ -1,7 +1,7 @@
 """
 Wimbledon
-Estimated:
-Actual
+Estimated: 1hr
+Actual: 1hr 40mins
 """
 
 FILENAME = "wimbledon.csv"
