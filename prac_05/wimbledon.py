@@ -43,10 +43,11 @@ def extract_information(data):
 
 def display_information(champion_to_count, countries):
     """Display champion mapped to count and countries that have won (alphabetical order)"""
+    print("Wimbledon Champions: ")
     for champ in champion_to_count:
         print(f"{champ} {champion_to_count[champ]}")
 
-    print(f"These {len(countries)} have won Wimbledon:")
+    print(f"\nThese {len(countries)} have won Wimbledon:")
     print(" ".join(sorted(countries)))
 
 
