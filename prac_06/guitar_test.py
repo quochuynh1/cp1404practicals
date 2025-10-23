@@ -1,5 +1,5 @@
 """
-
+Prac 06 - Testing Guitar class
 """
 from prac_06.guitar import Guitar
 
