@@ -10,7 +10,7 @@ import random
 VOWELS = "aeiou"
 CONSONANTS = "bcdfghjklmnpqrstvwxyz"
 
-word_format = "ccvcvvc"
+word_format = input("Enter a sequence of vowels and constants (e.g., ccvcvvc): ")
 word = ""
 for kind in word_format:
     if kind == "c":
