@@ -31,7 +31,7 @@ def main():
         print(subjects[i], "Scores:")
         for score in subject_scores:
             print(score)
-        print("Max:", max(score_values[i]))
+        print("Max:", max(transposed_scores[i]))
         print()
 
 
