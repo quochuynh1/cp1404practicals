@@ -9,7 +9,6 @@ from prac_07.project import Project
 
 def main():
     """"""
-
     projects = load_projects()
 
     print("Welcome to Pythonic Project Management")
@@ -23,7 +22,8 @@ def main():
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            pass
+            filename = input("Enter filename: ")
+            projects = load_projects(filename=filename)
         elif choice == "D":
             display_projects(projects)
         else:
@@ -36,9 +36,10 @@ def main():
         print("- (Q)uit")
         choice = input(">>> ").upper()
 
-def load_projects():
+
+def load_projects(filename="projects.txt"):
     """Read projects.txt and store each record as a Project object in a list """
-    with open("projects.txt", "r") as in_file:
+    with open(filename, "r") as in_file:
         projects = []
         in_file.readline()
         for line in in_file:
@@ -56,7 +57,6 @@ def load_projects():
 def display_projects(projects):
     for project in projects:
         print(project)
-
 
 
 main()
