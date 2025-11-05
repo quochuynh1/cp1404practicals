@@ -8,6 +8,8 @@ def main():
     """Guitar Program"""
     guitars = load_guitars()
     print_guitars(guitars)
+    get_new_guitars(guitars)
+    save_new_guitars(guitars)
 
 
 def load_guitars():
@@ -29,6 +31,27 @@ def print_guitars(guitars):
     guitars.sort()
     for guitar in guitars:
         print(guitar)
+
+
+def get_new_guitars(guitars):
+    name = input("Name: ")
+    while name != "":
+        year = int(input("Year: "))
+        cost = float(input("Cost: "))
+
+        guitar = Guitar(name, year, cost)
+        guitars.append(guitar)
+        print(f"{guitar} added.")
+
+        name = input("Name: ")
+    return guitars
+
+
+def save_new_guitars(guitars):
+    with open("guitars.csv", "w") as out_file:
+        guitars.sort()
+        for guitar in guitars:
+            out_file.write(f"{guitar.name}, {guitar.year}, {guitar.cost}\n")
 
 
 main()
