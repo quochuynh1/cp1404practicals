@@ -55,8 +55,16 @@ def load_projects(filename="projects.txt"):
 
 
 def display_projects(projects):
+    print("Incomplete projects: ")
     for project in projects:
-        print(project)
+        if project.completion_percentage < 100:
+            print(f"\t{project}")
+
+    print("Complete projects: ")
+    for project in projects:
+        if project.completion_percentage == 100:
+            print(f"\t{project}")
+
 
 
 main()
