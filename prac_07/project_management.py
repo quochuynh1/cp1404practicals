@@ -5,7 +5,7 @@ Estimated: 2hrs
 Actual:
 """
 from prac_07.project import Project
-
+from datetime import datetime
 
 def main():
     """"""
@@ -30,6 +30,8 @@ def main():
             display_projects(projects)
         elif choice == "U":
             update_projects(projects)
+        elif choice == "F":
+            filter_projects_by_date(projects)
         elif choice == "A":
             add_project(projects)
         else:
@@ -102,5 +104,20 @@ def add_project(projects):
     new_project = Project(name, start_date, priority, cost_estimate, percentage_complete)
     projects.append(new_project)
 
+
+def filter_projects_by_date(projects):
+    """"""
+    date = input("Show projects that start after datee (dd/mm/yy): ")
+
+    filter_date = datetime.strptime(date, "%d/%m/%Y").date()
+
+    filtered_projects = []
+    for project in projects:
+        project_date = datetime.strptime(project.start_date, "%d/%m/%Y").date()
+        if project_date > filter_date:
+            filtered_projects.append(project)
+
+    for project in filtered_projects:
+        print(project)
 
 main()
