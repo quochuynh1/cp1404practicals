@@ -9,10 +9,11 @@ from prac_07.project import Project
 
 def main():
     """"""
+    filename = "projects.txt"
     projects = load_projects()
 
     print("Welcome to Pythonic Project Management")
-    print(f"Loaded len(projects) projects from projects.txt")
+    print(f"Loaded {len(projects)} projects from {filename}")
     print("- (L)oad projects")
     print("- (S)ave projects")
     print("- (D)isplay projects")
@@ -26,6 +27,8 @@ def main():
             projects = load_projects(filename=filename)
         elif choice == "D":
             display_projects(projects)
+        elif choice == "U":
+            update_projects(projects, filename)
         else:
             print("Invalid menu choice")
         print("- (L)oad projects")
@@ -65,6 +68,21 @@ def display_projects(projects):
         if project.completion_percentage == 100:
             print(f"\t{project}")
 
+
+def update_projects(projects, filename):
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+
+    project_choice = int(input("Project choice: "))
+    selected_project = projects[project_choice]
+
+    new_percentage = int(input("New percentage: "))
+    if new_percentage:
+        selected_project.completion_percentage = new_percentage
+
+    new_priority = int(input("New priority: "))
+    if new_priority:
+        selected_project.priority = new_priority
 
 
 main()
