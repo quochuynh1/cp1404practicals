@@ -18,6 +18,7 @@ def main():
     print("- (S)ave projects")
     print("- (D)isplay projects")
     print("- (F)ilter projects by date")
+    print("- (A)dd new project")
     print("- (U)pdate projects")
     print("- (Q)uit")
     choice = input(">>> ").upper()
@@ -28,13 +29,16 @@ def main():
         elif choice == "D":
             display_projects(projects)
         elif choice == "U":
-            update_projects(projects, filename)
+            update_projects(projects)
+        elif choice == "A":
+            add_project(projects)
         else:
             print("Invalid menu choice")
         print("- (L)oad projects")
         print("- (S)ave projects")
         print("- (D)isplay projects")
         print("- (F)ilter projects by date")
+        print("- (A)dd new project")
         print("- (U)pdate projects")
         print("- (Q)uit")
         choice = input(">>> ").upper()
@@ -58,6 +62,7 @@ def load_projects(filename="projects.txt"):
 
 
 def display_projects(projects):
+    """"""
     print("Incomplete projects: ")
     for project in projects:
         if project.completion_percentage < 100:
@@ -69,7 +74,8 @@ def display_projects(projects):
             print(f"\t{project}")
 
 
-def update_projects(projects, filename):
+def update_projects(projects):
+    """"""
     for i, project in enumerate(projects):
         print(f"{i} {project}")
 
@@ -83,6 +89,18 @@ def update_projects(projects, filename):
     new_priority = int(input("New priority: "))
     if new_priority:
         selected_project.priority = new_priority
+
+
+def add_project(projects):
+    """"""
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = input("Start datee (dd/mm/yy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: $"))
+    percentage_complete = int(input("Percentage complete: "))
+    new_project = Project(name, start_date, priority, cost_estimate, percentage_complete)
+    projects.append(new_project)
 
 
 main()
