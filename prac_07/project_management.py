@@ -60,11 +60,28 @@ def main():
 
 
 def get_valid_filename():
+    """"""
     try:
         filename = input("Enter filename: ")
     except FileNotFoundError:
         print("File not found")
     return filename
+
+
+def get_valid_int(prompt):
+    """Prompt the user to enter a number until it is valid"""
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            number = int(input(prompt))
+            if number <= 0:
+                print("Number must be > 0")
+            else:
+                is_valid_input = True
+                return number
+        except ValueError:
+            print("Invalid input - please enter a valid number")
+    return None
 
 
 def load_projects(filename="projects.txt"):
@@ -102,14 +119,33 @@ def update_projects(projects):
     for i, project in enumerate(projects):
         print(f"{i} {project}")
 
-    project_choice = int(input("Project choice: "))
-    selected_project = projects[project_choice]
+    while True:
+        try:
+            project_choice = int(input("Project choice: "))
+            selected_project = projects[project_choice]
+            break
+        except (ValueError, IndexError):
+            print("Invalid project number")
 
-    new_percentage = int(input("New percentage: "))
-    selected_project.completion_percentage = new_percentage
+    while True:
+        try:
+            new_percentage = input("New percentage: ")
+            if new_percentage != "":
+                selected_project.completion_percentage = new_percentage
+            else:
+                break
+        except ValueError:
+            print("Invalid input")
 
-    new_priority = int(input("New priority: "))
-    selected_project.priority = new_priority
+    while True:
+        try:
+            new_priority = input("New percentage: ")
+            if new_priority != "":
+                selected_project.new_priority = new_priority
+            else:
+                break
+        except ValueError:
+            print("Invalid input")
 
 
 def add_project(projects):
