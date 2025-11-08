@@ -4,7 +4,7 @@ Project Management Program
 Estimated: 2hrs
 Actual:
 """
-from prac_03.capitalist_conrad import out_file
+from prac_03.capitalist_conrad import FILENAME
 from prac_07.project import Project
 from datetime import datetime
 
@@ -26,8 +26,8 @@ def main():
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            filename = input("Enter filename: ")
-            projects = load_projects(filename=filename)
+            filename = get_valid_filename()
+            load_projects(filename=filename)
         elif choice == "S":
             filename = input("Enter filename to save projects to: ")
             save_projects(projects, filename=filename)
@@ -57,6 +57,14 @@ def main():
         save_projects(projects, filename=filename)
         print(f"Projects saved to {filename}")
         print("Thank you for using custom-built project management software.")
+
+
+def get_valid_filename():
+    try:
+        filename = input("Enter filename: ")
+    except FileNotFoundError:
+        print("File not found")
+    return filename
 
 
 def load_projects(filename="projects.txt"):
@@ -133,6 +141,7 @@ def filter_projects_by_date(projects):
 
 
 def save_projects(projects, filename="projects.txt"):
+    """"""
     with open(filename, "w") as out_file:
         for project in projects:
             out_file.write(
