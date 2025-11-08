@@ -2,17 +2,17 @@
 Prac 07 - Do From Scratch Exercise
 Project Management Program
 Estimated: 2hrs
-Actual:
+Actual: Few days (Approx 3hrs 30mins total)
 """
-from prac_03.capitalist_conrad import FILENAME
+
 from prac_07.project import Project
 from datetime import datetime
 
 
 def main():
-    """"""
+    """Program to keep track of complete and incomplete projects"""
     filename = "projects.txt"
-    projects = load_projects()
+    projects = load_projects(filename=filename)
 
     print("Welcome to Pythonic Project Management")
     print(f"Loaded {len(projects)} projects from {filename}")
@@ -27,7 +27,8 @@ def main():
     while choice != "Q":
         if choice == "L":
             filename = get_valid_filename()
-            load_projects(filename=filename)
+            projects = load_projects(filename=filename)
+            print(f"Projects loaded from {filename}")
         elif choice == "S":
             filename = input("Enter filename to save projects to: ")
             save_projects(projects, filename=filename)
@@ -60,12 +61,15 @@ def main():
 
 
 def get_valid_filename():
-    """"""
+    """Prompt the user for a valid filename until it is either not black, or exists in the file directory"""
     try:
         filename = input("Enter filename: ")
     except FileNotFoundError:
         print("File not found")
     return filename
+
+
+# TODO: create exception based error checking to ask for a valid filename until it is either not blank, or it exists.
 
 
 def get_valid_int(prompt):
@@ -84,7 +88,7 @@ def get_valid_int(prompt):
     return None
 
 
-def load_projects(filename="projects.txt"):
+def load_projects(filename):
     """Read projects.txt and store each record as a Project object in a list """
     with open(filename, "r") as in_file:
         projects = []
@@ -102,20 +106,22 @@ def load_projects(filename="projects.txt"):
 
 
 def display_projects(projects):
-    """"""
+    """Display two groups: incomplete projects; completed projects, both sorted by priority"""
     print("Incomplete projects: ")
     for project in projects:
-        if project.completion_percentage < 100:
+        if int(project.completion_percentage) < 100:
             print(f"\t{project}")
 
     print("Complete projects: ")
     for project in projects:
-        if project.completion_percentage == 100:
+        if int(project.completion_percentage) == 100:
             print(f"\t{project}")
 
 
+# TODO: Sort projects by priority
+
 def update_projects(projects):
-    """"""
+    """Choose a project, then modify the completion % and/or priority - the user can leave either input blank to retain existing values"""
     for i, project in enumerate(projects):
         print(f"{i} {project}")
 
@@ -123,6 +129,7 @@ def update_projects(projects):
         try:
             project_choice = int(input("Project choice: "))
             selected_project = projects[project_choice]
+            print(selected_project)
             break
         except (ValueError, IndexError):
             print("Invalid project number")
@@ -132,6 +139,7 @@ def update_projects(projects):
             new_percentage = input("New percentage: ")
             if new_percentage != "":
                 selected_project.completion_percentage = new_percentage
+                break
             else:
                 break
         except ValueError:
@@ -139,9 +147,10 @@ def update_projects(projects):
 
     while True:
         try:
-            new_priority = input("New percentage: ")
+            new_priority = input("New priority: ")
             if new_priority != "":
                 selected_project.new_priority = new_priority
+                break
             else:
                 break
         except ValueError:
@@ -149,7 +158,7 @@ def update_projects(projects):
 
 
 def add_project(projects):
-    """"""
+    """Ask the user for the inputs and add a new project to memory"""
     print("Let's add a new project")
     name = input("Name: ")
     start_date = input("Start datee (dd/mm/yyyy): ")
@@ -161,7 +170,7 @@ def add_project(projects):
 
 
 def filter_projects_by_date(projects):
-    """"""
+    """Ask the user for a date and display only projects that start after that date, sorted by date"""
     date = input("Show projects that start after datee (dd/mm/yyyy): ")
 
     filter_date = datetime.strptime(date, "%d/%m/%Y").date()
@@ -175,9 +184,11 @@ def filter_projects_by_date(projects):
     for project in filtered_projects:
         print(project)
 
+    # TODO: Sort filtered projects by date
+
 
 def save_projects(projects, filename="projects.txt"):
-    """"""
+    """Prompt the user for a filename to save projects to and save them"""
     with open(filename, "w") as out_file:
         for project in projects:
             out_file.write(
