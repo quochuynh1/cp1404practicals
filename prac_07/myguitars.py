@@ -34,6 +34,7 @@ def print_guitars(guitars):
 
 
 def get_new_guitars(guitars):
+    """Prompt the user for name, year, and cost of their new guitar"""
     name = input("Name: ")
     while name != "":
         year = int(input("Year: "))
@@ -48,6 +49,7 @@ def get_new_guitars(guitars):
 
 
 def save_new_guitars(guitars):
+    """Save the all guitars in memory to guitars.csv"""
     with open("guitars.csv", "w") as out_file:
         guitars.sort()
         for guitar in guitars:
