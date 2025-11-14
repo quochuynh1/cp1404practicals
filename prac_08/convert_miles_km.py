@@ -36,8 +36,8 @@ class MilesConverter(App):
         new_miles = current_miles + value
         self.root.ids.input_miles.text = str(new_miles)
 
-    # def handle_update(self):
-    #     self.message = self.root.ids.input_miles.text
+    def handle_update(self):
+        self.message = self.root.ids.input_miles.text
 
 
 MilesConverter().run()
