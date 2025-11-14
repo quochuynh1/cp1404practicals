@@ -4,13 +4,15 @@ BoxLayout:
     BoxLayout:
         orientation: 'horizontal'
         TextInput:
+            font_size: '50'
             id: input_miles
             text: ''
             on_text: app.handle_conversion()
 
         BoxLayout:
             orientation: 'vertical'
-            Button:
+            size_hint_x: 0.25
+            Button
                 text: 'Up'
                 on_press: app.handle_increment(+1) #, app.handle_update()
             BoxLayout:
@@ -25,3 +27,5 @@ BoxLayout:
     Label:
         id: output_label
         text: ''
+        font_size: '50'
+        color: (1, 1, 0, 1)
