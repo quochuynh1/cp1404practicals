@@ -18,12 +18,20 @@ class MilesConverter(App):
         self.root = Builder.load_file('convert_miles_km.kv')
         return self.root
 
-    def handle_conversion(self, value):
+    def get_valid_integer(self):
+        try:
+            value = float(self.root.ids.input_miles.text)
+            return value
+        except ValueError:
+            return 0
+
+    def handle_conversion(self):
+        value = self.get_valid_integer()
         result = float(value) * 1.60934
         self.root.ids.output_label.text = str(result)
 
     def handle_increment(self, value):
-        current_miles = float(self.root.ids.input_miles.text)
+        current_miles = self.get_valid_integer()
         new_miles = current_miles + value
         self.root.ids.input_miles.text = str(new_miles)
 
