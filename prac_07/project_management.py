@@ -8,21 +8,21 @@ Actual: Few days (Approx 3hrs 30mins total)
 from prac_07.project import Project
 from datetime import datetime
 
+MENU = ("Welcome to Pythonic Project Management\n"
+        "Loaded {len(projects)} projects from {filename}\n"
+        "- (L)oad projects\n"
+        "- (S)ave projects\n"
+        "- (D)isplay projects\n"
+        "- (F)ilter projects by date\n"
+        "- (A)dd new project\n"
+        "- (U)pdate projects")
 
 def main():
     """Program to keep track of complete and incomplete projects"""
     filename = "projects.txt"
     projects = load_projects(filename=filename)
 
-    print("Welcome to Pythonic Project Management")
-    print(f"Loaded {len(projects)} projects from {filename}")
-    print("- (L)oad projects")
-    print("- (S)ave projects")
-    print("- (D)isplay projects")
-    print("- (F)ilter projects by date")
-    print("- (A)dd new project")
-    print("- (U)pdate projects")
-    print("- (Q)uit")
+    print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
@@ -43,13 +43,7 @@ def main():
             add_project(projects)
         else:
             print("Invalid menu choice")
-        print("- (L)oad projects")
-        print("- (S)ave projects")
-        print("- (D)isplay projects")
-        print("- (F)ilter projects by date")
-        print("- (A)dd new project")
-        print("- (U)pdate projects")
-        print("- (Q)uit")
+        print(MENU)
         choice = input(">>> ").upper()
     save_prompt = input(f"Would you like to save to {filename}? ").lower()
     if save_prompt != "yes":
